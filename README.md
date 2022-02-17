@@ -13,5 +13,20 @@ MySQL
 PHP
 
 ## Tech Setup
-If you want to use docker setup, please follow the instructions inside the README.md inside docker folder.
+To setup this application, you would need either a LAMP stack, XAMP, or docker setup. You can see below instructions for Docker setup.
 
+## Docker Setup
+1. Install Docker Desktop - https://www.docker.com/products/docker-desktop
+2. After Docker is installed, restart your machine. Make sure you follow the steps from Docker site to correctly install the software to avoid any issues in next steps.
+3. Go inside /money-app/ and run docker-compose up -d
+4. Install Composer from https://getcomposer.org/download/. You can skip this step and run the next step install the docker container
+5. Install composer dependencies: 
+    a. Go inside money-app/www/laravel-app/
+    b. Run composer install
+5. Now, you should be able to access the site by going to localhost on your machine  
+
+## Folder Structure and description
+money-app - This is the main application folder.
+project_docs - This folder will contain all the project related documents like SRS, diagrams, ERD, etc.
+
+/money-app/www/laravel-app - This folder contains Laravel 9.x setup. This is where all the code should be. You can read more about Laravel 9.x directory structure. https://laravel.com/docs/9.x/structure
