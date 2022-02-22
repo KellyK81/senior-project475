@@ -35,7 +35,7 @@ To setup this application, you would need either a LAMP stack, XAMP, or docker s
     DB_DATABASE=money_app
     DB_USERNAME=root
     DB_PASSWORD=tiger
-5. Now, you should be able to access the site by going to http://localhost/ on your machine  
+7. Now, you should be able to access the site by going to http://localhost/ on your machine  
 
 ## Folder Structure and description
 money-app - This is the main application folder.
