@@ -15,9 +15,15 @@ PHP
 ## Tech Setup
 To setup this application, you would need either a LAMP stack, XAMP, or docker setup. You can see below instructions for Docker setup.
 
-## Docker Setup
+## Pre-requisite
 1. Install Docker Desktop - https://www.docker.com/products/docker-desktop
-2. After Docker is installed, restart your machine. Make sure you follow the steps from Docker site to correctly install the software to avoid any issues in next steps.
+    Note: After Docker is installed, restart your machine. Make sure you follow the steps from Docker site to correctly install the software to avoid any issues in next steps.
+2. Install Node from https://nodejs.org/en/download/
+3. Install Git from https://git-scm.com/download/win (Windows)
+
+## Local Environment Setup
+1. Start Docker Desktop
+2. Open Git Bash or Terminal
 3. Go inside /money-app/ and follow these commands: 
     a) cp sample.env .env
     b) docker-compose up -d
