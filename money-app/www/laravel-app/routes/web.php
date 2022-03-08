@@ -25,4 +25,8 @@ Route::get('/page', function () {
     return view('layouts.page');
 });
 
+Route::get('/calculator', function () {
+    return view('calculator.index');
+})->name("calculator");
+
 require __DIR__.'/auth.php';
