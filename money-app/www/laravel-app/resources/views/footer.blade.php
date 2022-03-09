@@ -5,3 +5,7 @@
 <script src="{{ asset('js/main.js?v=1.01') }}"></script>
 <script src="//cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+
+@if (Route::currentRouteName() == 'calculator')
+    <script src="{{ asset('js/calculator.js?v=1.01') }}"></script>
+@endif

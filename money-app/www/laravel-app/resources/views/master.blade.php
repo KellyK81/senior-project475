@@ -8,6 +8,11 @@
         <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" id="bootstrap-css"> -->
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap4.min.css">
         <link rel="stylesheet" href="{{ asset('css/main.css?v=1.00') }}">
+
+        @if (Route::currentRouteName() == 'calculator')
+            <link rel="stylesheet" href="{{ asset('css/calculator.css?v=1.00') }}">
+        @endif
+
     </head>
     <body>
         <header>
