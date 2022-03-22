@@ -16,8 +16,16 @@ class CreateUserProfileTable extends Migration
         Schema::create('user_profile', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->timestamps();
             $table->string('job_title');
+            $table->string('job_skills');
+            $table->string('city');
+            $table->string('state');
+            $table->string('zipcode');
+            $table->string('job_location_preference');
+            $table->decimal('years_of_experience', 2, 2);
+            $table->smallInteger('expected_retirement_age');
+            $table->decimal('expected_retirement_income', 8, 2);
+            $table->timestamps();
         });
     }
 
