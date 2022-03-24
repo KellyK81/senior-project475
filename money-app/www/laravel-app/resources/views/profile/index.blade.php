@@ -47,7 +47,7 @@
              <!-- Current Country -->
              <div class="mt-4">
                 <x-label for="country" :value="__('Country')" />
-                <x-input id="country" class="block mt-1 w-full" type="text" name="country" :value="old('country')" required />
+                @include('components.countries')
             </div>
 
              <!-- Postal Code -->
@@ -56,9 +56,8 @@
                 <x-input id="zipcode" class="block mt-1 w-full" type="text" name="zipcode" :value="old('zipcode')" required />
             </div>
 
-
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('income') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('profile') }}">
                     {{ __('Skip, I will do it later.') }}
                 </a>
 
