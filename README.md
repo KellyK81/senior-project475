@@ -5,12 +5,12 @@ This Money Opportunity Web Application wil include tasks and files that were com
 
 
 ## Tech Stack
-This project is developed using the LAMP Stack.
-Linux
-Apache
-PHP
-MySQL
-PHP
+This project is developed using the LAMP Stack:
+Linux <br />
+Apache <br />
+PHP <br />
+MySQL <br />
+Laravel Framework
 
 ## Tech Setup
 To setup this application, you would need either a LAMP stack, XAMP, or docker setup. You can see below instructions for Docker setup.
