@@ -20,6 +20,7 @@ class CreateUserProfileTable extends Migration
             $table->string('job_skills');
             $table->string('city');
             $table->string('state');
+            $table->string('country');
             $table->string('zipcode');
             $table->string('job_location_preference');
             $table->decimal('years_of_experience', 2, 2);

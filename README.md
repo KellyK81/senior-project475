@@ -5,7 +5,7 @@ This Money Opportunity Web Application wil include tasks and files that were com
 
 
 ## Tech Stack
-This project is developed using the LAMP Stack:
+This project is developed using the LAMP Stack: <br />
 Linux <br />
 Apache <br />
 PHP <br />
