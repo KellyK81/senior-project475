@@ -62,4 +62,14 @@ Route::middleware('auth')->group(function () {
                 ->name('profile');
 
     Route::post('profile', [UserProfileController::class, 'store']);
+
+    Route::get('income', [UserProfileController::class, 'createIncome'])
+        ->name('income');
+
+    Route::post('income', [UserProfileController::class, 'storeIncome']);
+
+    Route::get('expense', [UserProfileController::class, 'createExpense'])
+        ->name('expense');
+
+    Route::post('expense', [UserProfileController::class, 'storeExpense']);
 });

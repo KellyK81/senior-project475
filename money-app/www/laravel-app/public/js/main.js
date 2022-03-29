@@ -52,5 +52,10 @@
       }, 1000, 'easeInOutExpo');
       e.preventDefault();
     });
-  
+    
+    // if ($('.multiselect-dropdown')) {
+    //   $('.multiselect-dropdown').multiselect();
+    // }
+    
+
   })(jQuery); // End of use strict
