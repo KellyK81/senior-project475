@@ -14,8 +14,9 @@
 
             <!-- Income Source -->
             <div>
-                <x-label for="income_soource" :value="__('Income Source')" />
-                <select id="income_soource" name="income_soource" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required autofocus>
+                <x-label for="income_source" :value="__('Income Source')" />
+                <select id="income_source" name="income_source" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required autofocus>
+                    <option value="">Select Income Source</option>
                     <option value="employment">Employment Income (W2)</option>
                     <option value="contract">Contract Income</option>
                     <option value="business">Business Income</option>

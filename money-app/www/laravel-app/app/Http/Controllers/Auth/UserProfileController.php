@@ -72,10 +72,8 @@ class UserProfileController extends Controller
     public function storeIncome(Request $request)
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'dob' => ['required'],
+            'income_source' => ['required', 'string', 'max:255'],
+            'monthly_income' => ['required', 'numeric'],
         ]);
 
         $user = User::create([

@@ -14,8 +14,17 @@
 
             <!-- Expense Type -->
             <div>
-                <x-label for="income_soource" :value="__('Income Source')" />
-                <x-input id="expense_type" class="block mt-1 w-full" type="text" name="expense_type" :value="old('expense_type')" required autofocus />
+                <x-label for="income_soource" :value="__('Expense Type - Monthly')" />
+                <select id="expense_type" name="expense_type" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required autofocus>
+                    <option value="">Select Expense Type</option>
+                    <option value="mortgage">Mortgage Payment</option>
+                    <option value="personal_loan">Personal Loan Payment</option>
+                    <option value="car_loan">Car Loan Payment</option>
+                    <option value="rental">Rental Payment</option>
+                    <option value="groceries">Groceries</option>
+                    <option value="utilities">Utilities</option>
+                    <option value="other">Other Expense</option>
+                </select>
             </div>
 
             <!-- Monthly Expense Amount -->
