@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
@@ -49,27 +50,22 @@ Route::middleware('auth')->group(function () {
 
     Route::get('confirm-password', [ConfirmablePasswordController::class, 'show'])
                 ->name('password.confirm');
-
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
-    
     Route::get('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
     Route::get('profile', [UserProfileController::class, 'create'])
                 ->name('profile');
-
     Route::post('profile', [UserProfileController::class, 'store']);
 
-    Route::get('income', [UserProfileController::class, 'createIncome'])
+    Route::get('income', [IncomeController::class, 'create'])
         ->name('income');
-
-    Route::post('income', [UserProfileController::class, 'storeIncome']);
+    Route::post('income', [IncomeController::class, 'store']);
 
     Route::get('expense', [UserProfileController::class, 'createExpense'])
         ->name('expense');
-
     Route::post('expense', [UserProfileController::class, 'storeExpense']);
 });

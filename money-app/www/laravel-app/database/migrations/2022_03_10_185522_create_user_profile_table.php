@@ -23,8 +23,8 @@ class CreateUserProfileTable extends Migration
             $table->string('country');
             $table->string('zipcode');
             $table->string('job_location_preference');
-            $table->decimal('years_of_experience', 2, 2);
-            $table->smallInteger('expected_retirement_age');
+            $table->decimal('years_of_experience', 4, 2);
+            $table->decimal('expected_retirement_age', 4, 2);
             $table->decimal('expected_retirement_income', 8, 2);
             $table->timestamps();
         });

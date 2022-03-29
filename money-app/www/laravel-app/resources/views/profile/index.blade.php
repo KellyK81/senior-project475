@@ -15,7 +15,6 @@
             <!-- Name -->
             <div>
                 <x-label for="job_title" :value="__('Job Title')" />
-
                 <x-input id="job_title" class="block mt-1 w-full" type="text" name="job_title" :value="old('job_title')" required autofocus />
             </div>
 
@@ -27,14 +26,14 @@
 
             <!-- Job Location Preference -->
             <div class="mt-4">
-                <x-label for="job_location_preferences" :value="__('Job Location Preferences')" />
-                <x-input id="job_location_preferences" class="block mt-1 w-full" type="text" name="job_location_preferences" :value="old('job_location_preferences')" required />
+                <x-label for="job_location_preference" :value="__('Job Location Preferences - City')" />
+                <x-input id="job_location_preference" class="block mt-1 w-full" type="text" name="job_location_preference" :value="old('job_location_preferences')" placeholder="Frederick, Rockville, Bethesda" required />
             </div>
 
             <!-- Years of Experience -->
             <div class="mt-4">
-                <x-label for="years_of_expeience" :value="__('Years of Experience')" />
-                <x-input id="years_of_expeience" class="block mt-1 w-full" type="number" name="years_of_expeience" :value="old('years_of_expeience')"
+                <x-label for="years_of_experience" :value="__('Years of Experience')" />
+                <x-input id="years_of_experience" class="block mt-1 w-full" type="number" name="years_of_experience" :value="old('years_of_expeience')"
                 placeholder="6.0" step="0.01" min="0" max="70" required />
             </div>
 
@@ -78,7 +77,7 @@
             </div>
 
             <div class="flex items-center justify-end mt-4">
-                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('profile_income') }}">
+                <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('income') }}">
                     {{ __('Skip, I will do it later.') }}
                 </a>
 

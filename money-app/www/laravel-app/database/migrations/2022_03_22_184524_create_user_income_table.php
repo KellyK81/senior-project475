@@ -29,6 +29,6 @@ class CreateUserIncomeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_finances');
+        Schema::dropIfExists('user_income');
     }
 }
