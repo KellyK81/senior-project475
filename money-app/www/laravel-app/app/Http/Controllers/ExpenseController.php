@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Income;
+use App\Models\Expense;
 
-class IncomeController extends Controller
+class ExpenseController extends Controller
 {
     /**
      * Display the Profile Income View
@@ -15,7 +15,7 @@ class IncomeController extends Controller
      */
     public function create()
     {
-        return view('profile.income');
+        return view('profile.expense');
     }
 
     /**
@@ -29,14 +29,14 @@ class IncomeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'income_source' => ['required', 'string', 'max:255'],
-            'monthly_income' => ['required', 'numeric'],
+            'expense_type' => ['required', 'string', 'max:255'],
+            'monthly_expense_amount' => ['required', 'numeric'],
         ]);
 
-        $user = Income::create([
+        $user = Expense::create([
             'user_id' => Auth::user()->id,
-            'income_source' => $request->income_source,
-            'monthly_income' => $request->monthly_income,
+            'expense_type' => $request->expense_type,
+            'monthly_expense_amount' => $request->monthly_expense_amount,
         ]);
     }
 }

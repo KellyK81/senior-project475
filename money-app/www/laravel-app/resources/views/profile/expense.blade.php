@@ -14,7 +14,7 @@
 
             <!-- Expense Type -->
             <div>
-                <x-label for="income_soource" :value="__('Expense Type - Monthly')" />
+                <x-label for="expense_type" :value="__('Expense Type - Monthly')" />
                 <select id="expense_type" name="expense_type" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required autofocus>
                     <option value="">Select Expense Type</option>
                     <option value="mortgage">Mortgage Payment</option>
