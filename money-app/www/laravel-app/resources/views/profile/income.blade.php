@@ -11,6 +11,16 @@
 
         <form method="POST" action="{{ route('income') }}">
             @csrf
+            
+            <!-- Success/Failure Alert -->
+            @if (session('status'))
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{ session('status') }}</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            @endif
 
             <!-- Income Source -->
             <div>
@@ -21,7 +31,7 @@
                     <option value="contract">Contract Income</option>
                     <option value="business">Business Income</option>
                     <option value="interest">Interest Income</option>
-                    <option value="divident">Dividend Income</option>
+                    <option value="dividend">Dividend Income</option>
                     <option value="rental">Rental Income</option>
                     <option value="capital_gains">Investment Income/Capital Gains</option>
                     <option value="royalities">Royalties/licensing Income</option>
@@ -35,12 +45,13 @@
                 placeholder="$5000.00" step="1.0" min="0" max="999999999" required />
             </div>
 
+            <input type="hidden" id="addmore" name="addmore" />
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('expense') }}">
                     {{ __('Skip, I will do it later.') }}
                 </a>
-                <button type="submit" class="ml-4 btn btn-sm btn-secondary">
+                <button id="btnSaveAndAddMore" type="submit" class="ml-4 btn btn-sm btn-secondary">
                     {{ __('Save and Add More') }}
                 </button>
 

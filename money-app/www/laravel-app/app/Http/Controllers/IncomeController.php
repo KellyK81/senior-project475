@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use App\Models\Income;
 
 class IncomeController extends Controller
@@ -38,5 +39,11 @@ class IncomeController extends Controller
             'income_source' => $request->income_source,
             'monthly_income' => $request->monthly_income,
         ]);
+
+        if (!empty($request->addmore)) {
+            return redirect(RouteServiceProvider::INCOME)->with('status', ucfirst(str_replace('_',' ', $request->income_source)) .' income saved!');
+        }
+
+        return redirect(RouteServiceProvider::EXPENSE)->with('status', ucfirst(str_replace('_',' ', $request->income_source)) .' income saved!');
     }
 }

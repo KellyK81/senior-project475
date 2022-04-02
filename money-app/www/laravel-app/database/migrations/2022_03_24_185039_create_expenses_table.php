@@ -13,7 +13,7 @@ class CreateExpensesTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_expenses', function (Blueprint $table) {
+        Schema::create('user_expense', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('expense_type');
@@ -29,6 +29,6 @@ class CreateExpensesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_expenses');
+        Schema::dropIfExists('user_expense');
     }
 }

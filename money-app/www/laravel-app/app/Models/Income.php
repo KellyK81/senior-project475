@@ -9,6 +9,8 @@ class Income extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'user_id';
+
     protected $table = 'user_income';
 
     protected $fillable = [

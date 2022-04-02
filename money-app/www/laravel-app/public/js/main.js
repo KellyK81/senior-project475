@@ -56,6 +56,10 @@
     // if ($('.multiselect-dropdown')) {
     //   $('.multiselect-dropdown').multiselect();
     // }
+
+    $('#btnSaveAndAddMore').click(function() {
+        $('#addmore').val("1");
+    });
     
 
   })(jQuery); // End of use strict

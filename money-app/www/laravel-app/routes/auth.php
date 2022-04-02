@@ -8,6 +8,7 @@ use App\Http\Controllers\Auth\NewPasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\UserProfileController;
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
 use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
@@ -65,7 +66,7 @@ Route::middleware('auth')->group(function () {
         ->name('income');
     Route::post('income', [IncomeController::class, 'store']);
 
-    Route::get('expense', [UserProfileController::class, 'createExpense'])
+    Route::get('expense', [ExpenseController::class, 'create'])
         ->name('expense');
-    Route::post('expense', [UserProfileController::class, 'storeExpense']);
+    Route::post('expense', [ExpenseController::class, 'store']);
 });

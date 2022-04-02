@@ -5,11 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\UserProfile;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules;
 
 class UserProfileController extends Controller
 {
@@ -20,7 +17,10 @@ class UserProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.index');
+        // $user_profile = UserProfile::where('user_id', Auth::user()->id)->first();
+        $user_profile = UserProfile::find(Auth::user()->id);
+
+        return view('profile.index', ['user_profile' => $user_profile]);
     }
 
     /**
@@ -46,8 +46,9 @@ class UserProfileController extends Controller
             'zipcode' => ['required', 'string', 'max:255'],
         ]);
 
-        $userProfile = UserProfile::create([
-            'user_id' => Auth::user()->id,
+        $userProfile = UserProfile::updateOrCreate(
+            ['user_id' =>  Auth::user()->id],
+            ['user_id' => Auth::user()->id,
             'job_title' => $request->job_title,
             'job_skills' => $request->job_skills,
             'job_location_preference' => $request->job_location_preference,
@@ -60,44 +61,6 @@ class UserProfileController extends Controller
             'zipcode' => $request->zipcode,
         ]);
 
-        return redirect(RouteServiceProvider::INCOME);
-    }
-
-    /**
-     * Display the Profile Expense View
-     *
-     * @return \Illuminate\View\View
-     */
-    public function createExpense()
-    {
-        return view('profile.expense');
-    }
-
-
-    /**
-     * Handle an incoming Profile data request.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\RedirectResponse
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    public function storeExpense(Request $request)
-    {
-        $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'dob' => ['required'],
-        ]);
-
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'dob' => $request->dob,
-        ]);
-
-        return redirect(RouteServiceProvider::HOME);
+        return redirect(RouteServiceProvider::INCOME)->with('status', 'User profile data has been saved!');;
     }
 }

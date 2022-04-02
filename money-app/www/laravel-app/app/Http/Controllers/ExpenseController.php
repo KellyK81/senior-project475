@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Providers\RouteServiceProvider;
 use App\Models\Expense;
 
 class ExpenseController extends Controller
@@ -38,5 +39,11 @@ class ExpenseController extends Controller
             'expense_type' => $request->expense_type,
             'monthly_expense_amount' => $request->monthly_expense_amount,
         ]);
+
+        if (!empty($request->addmore)) {
+            return redirect(RouteServiceProvider::EXPENSE)->with('status', 'Expense for ' . ucfirst(str_replace('_',' ',$request->expense_type)) .' has been saved!');
+        }
+
+        return redirect(RouteServiceProvider::HOME);
     }
 }
