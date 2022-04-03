@@ -12,6 +12,7 @@
         <form method="POST" action="{{ route('income') }}">
             @csrf
             
+            <div><h2>Let's add your income!</h2></div>
             <!-- Success/Failure Alert -->
             @if (session('status'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -28,13 +29,14 @@
                 <select id="income_source" name="income_source" class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" required autofocus>
                     <option value="">Select Income Source</option>
                     <option value="employment">Employment Income (W2)</option>
-                    <option value="contract">Contract Income</option>
+                    <option value="contract">Contract Income (1099)</option>
                     <option value="business">Business Income</option>
                     <option value="interest">Interest Income</option>
                     <option value="dividend">Dividend Income</option>
                     <option value="rental">Rental Income</option>
                     <option value="capital_gains">Investment Income/Capital Gains</option>
                     <option value="royalities">Royalties/licensing Income</option>
+                    <option value="other">Other Income</option>
                 </select>
             </div>
 

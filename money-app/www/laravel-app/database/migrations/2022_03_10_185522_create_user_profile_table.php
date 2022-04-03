@@ -26,6 +26,7 @@ class CreateUserProfileTable extends Migration
             $table->decimal('years_of_experience', 4, 2);
             $table->decimal('expected_retirement_age', 4, 2);
             $table->decimal('expected_retirement_income', 8, 2);
+            $table->decimal('current_savings', 10, 2);
             $table->timestamps();
         });
     }

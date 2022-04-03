@@ -15,7 +15,7 @@
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/chart/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('js/chart/chart-pie-demo.js') }}"></script>
+    <script src="{{ asset('js/chart/chart-pie.js') }}"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.compatibility.js" integrity="sha512-+ol0Tck+iZU3Wj7lJSB9/7iVlEwvVbURRJTUQ9QmjVFF8tnrltnwuafT/eu1e4GTOgbCri6YLJkvUS8YIr4U2w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 

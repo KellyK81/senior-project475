@@ -17,7 +17,6 @@ class UserProfileController extends Controller
      */
     public function create()
     {
-        // $user_profile = UserProfile::where('user_id', Auth::user()->id)->first();
         $user_profile = UserProfile::find(Auth::user()->id);
 
         return view('profile.index', ['user_profile' => $user_profile]);
@@ -40,6 +39,7 @@ class UserProfileController extends Controller
             'years_of_experience' => ['required'],
             'expected_retirement_age' => ['required'],
             'expected_retirement_income' => ['required'],
+            'current_savings' => ['required'],
             'city' => ['required', 'string', 'max:255'],
             'state' => ['required', 'string', 'max:255'],
             'country' => ['required', 'string', 'max:255'],
@@ -59,6 +59,7 @@ class UserProfileController extends Controller
             'state' => $request->state,
             'country' => $request->country,
             'zipcode' => $request->zipcode,
+            'current_savings' => $request->current_savings
         ]);
 
         return redirect(RouteServiceProvider::INCOME)->with('status', 'User profile data has been saved!');;

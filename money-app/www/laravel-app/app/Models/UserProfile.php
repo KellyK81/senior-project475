@@ -25,5 +25,6 @@ class UserProfile extends Model
         'years_of_experience',
         'expected_retirement_age',
         'expected_retirement_income',
+        'current_savings',
     ];
 }

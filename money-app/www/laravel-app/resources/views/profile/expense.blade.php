@@ -11,7 +11,7 @@
 
         <form method="POST" action="{{ route('expense') }}">
             @csrf
-            
+            <div class="center"><h2>Let's add your expenses!</h2></div>
             <!-- Success/Failure Alert -->
             @if (session('status'))
                 <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -33,7 +33,7 @@
                     <option value="rental">Rental Payment</option>
                     <option value="groceries">Groceries</option>
                     <option value="utilities">Utilities</option>
-                    <option value="other">Other Expense</option>
+                    <option value="other">Other Expenses</option>
                 </select>
             </div>
 

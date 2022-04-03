@@ -63,10 +63,10 @@ Route::middleware('auth')->group(function () {
     Route::post('profile', [UserProfileController::class, 'store']);
 
     Route::get('income', [IncomeController::class, 'create'])
-        ->name('income');
+                ->name('income');
     Route::post('income', [IncomeController::class, 'store']);
 
     Route::get('expense', [ExpenseController::class, 'create'])
-        ->name('expense');
+                ->name('expense');
     Route::post('expense', [ExpenseController::class, 'store']);
 });
