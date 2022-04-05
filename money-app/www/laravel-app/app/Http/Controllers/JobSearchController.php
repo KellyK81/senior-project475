@@ -8,7 +8,7 @@ use App\Providers\RouteServiceProvider;
 
 class JobSearchController extends Controller
 {
-    const API_KEY = '843ef442c6msh6b478b0bed1a1cbp1c9d0bjsn37a8eac99ab2';
+    const API_KEY = '';
     const BASE_URL = 'indeed-indeed.p.rapidapi.com';
 
     public static function invoke_api($location, $skills) {
