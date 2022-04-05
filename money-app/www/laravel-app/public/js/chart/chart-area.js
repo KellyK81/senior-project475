@@ -2,6 +2,35 @@
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
+var monthly_income = parseFloat(document.getElementById("income").value);
+var monthly_expenses = parseFloat(document.getElementById("expenses").value);
+var current_savings = parseFloat(document.getElementById("current_savings").value);
+var expected_retirement_age = parseFloat(document.getElementById("expected_retirement_age").value);
+var user_age = parseFloat(document.getElementById("user_age").value);
+
+const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+
+// Get names of next 12 months
+var next12Months = [];
+const date = new Date();
+
+let monthIndex = date.getMonth();
+let current_month = months[monthIndex];
+for (i = 0; i < 12; i++) {
+  if ( (monthIndex+i) === 11) {
+    monthIndex = 0;
+  }
+  current_month = months[monthIndex+i];
+  next12Months.push( current_month  );  
+}
+
+var projected_savings = [];
+var savings = current_savings;
+for (i = 0; i < 12; i++) {
+  savings += (monthly_income-monthly_expenses);
+  projected_savings.push( savings  );
+}
+
 function number_format(number, decimals, dec_point, thousands_sep) {
   // *     example: number_format(1234.56, 2, ',', ' ');
   // *     return: '1 234,56'
@@ -32,9 +61,9 @@ var ctx = document.getElementById("myAreaChart");
 var myLineChart = new Chart(ctx, {
   type: 'line',
   data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    labels: next12Months,
     datasets: [{
-      label: "Earnings",
+      label: "Savings",
       lineTension: 0.3,
       backgroundColor: "rgba(78, 115, 223, 0.05)",
       borderColor: "rgba(78, 115, 223, 1)",
@@ -46,7 +75,113 @@ var myLineChart = new Chart(ctx, {
       pointHoverBorderColor: "rgba(78, 115, 223, 1)",
       pointHitRadius: 10,
       pointBorderWidth: 2,
-      data: [0, 10000, 5000, 15000, 10000, 20000, 15000, 25000, 20000, 30000, 25000, 40000],
+      data: projected_savings,
+    }],
+  },
+  options: {
+    maintainAspectRatio: false,
+    layout: {
+      padding: {
+        left: 10,
+        right: 25,
+        top: 25,
+        bottom: 0
+      }
+    },
+    scales: {
+      xAxes: [{
+        time: {
+          unit: 'date'
+        },
+        gridLines: {
+          display: false,
+          drawBorder: false
+        },
+        ticks: {
+          maxTicksLimit: 7
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          maxTicksLimit: 5,
+          padding: 10,
+          // Include a dollar sign in the ticks
+          callback: function(value, index, values) {
+            return '$' + number_format(value);
+          }
+        },
+        gridLines: {
+          color: "rgb(234, 236, 244)",
+          zeroLineColor: "rgb(234, 236, 244)",
+          drawBorder: false,
+          borderDash: [2],
+          zeroLineBorderDash: [2]
+        }
+      }],
+    },
+    legend: {
+      display: false
+    },
+    tooltips: {
+      backgroundColor: "rgb(255,255,255)",
+      bodyFontColor: "#858796",
+      titleMarginBottom: 10,
+      titleFontColor: '#6e707e',
+      titleFontSize: 14,
+      borderColor: '#dddfeb',
+      borderWidth: 1,
+      xPadding: 15,
+      yPadding: 15,
+      displayColors: false,
+      intersect: false,
+      mode: 'index',
+      caretPadding: 10,
+      callbacks: {
+        label: function(tooltipItem, chart) {
+          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+          return datasetLabel + ': $' + number_format(tooltipItem.yLabel);
+        }
+      }
+    }
+  }
+});
+
+
+// Area Chart Retirement
+var yearsTillRetirement = [];
+var projected_retirement_savings = [];
+
+const years_remaining = expected_retirement_age-user_age;
+var retirement_savings = current_savings;
+
+for (i = 0; i <= years_remaining; i++) {
+  retirement_savings += (monthly_income-monthly_expenses)*12;
+  projected_retirement_savings.push( retirement_savings  );
+}
+
+for (i = 0; i <= years_remaining; i++) {
+  yearsTillRetirement.push( user_age + i);
+}
+
+var ctxRetirement = document.getElementById("chartRetirement");
+var chartRetirement = new Chart(ctxRetirement, {
+  type: 'line',
+  data: {
+    labels: yearsTillRetirement,
+    datasets: [{
+      label: "Savings",
+      lineTension: 0.3,
+      backgroundColor: "rgba(78, 115, 223, 0.05)",
+      borderColor: "rgba(78, 115, 223, 1)",
+      pointRadius: 3,
+      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointBorderColor: "rgba(78, 115, 223, 1)",
+      pointHoverRadius: 3,
+      pointHoverBackgroundColor: "rgba(78, 115, 223, 1)",
+      pointHoverBorderColor: "rgba(78, 115, 223, 1)",
+      pointHitRadius: 10,
+      pointBorderWidth: 2,
+      data: projected_retirement_savings,
     }],
   },
   options: {

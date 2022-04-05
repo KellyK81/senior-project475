@@ -35,14 +35,14 @@
     });
   
     // Scroll to top button appear
-    $(document).on('scroll', function() {
-      var scrollDistance = $(this).scrollTop();
-      if (scrollDistance > 100) {
-        $('.scroll-to-top').fadeIn();
-      } else {
-        $('.scroll-to-top').fadeOut();
-      }
-    });
+    // $(document).on('scroll', function() {
+    //   var scrollDistance = $(this).scrollTop();
+    //   if (scrollDistance > 100) {
+    //     $('.scroll-to-top').fadeIn();
+    //   } else {
+    //     $('.scroll-to-top').fadeOut();
+    //   }
+    // });
   
     // Smooth scrolling using jQuery easing
     $(document).on('click', 'a.scroll-to-top', function(e) {
@@ -59,7 +59,25 @@
 
     $('#btnSaveAndAddMore').click(function() {
         $('#addmore').val("1");
-    });
-    
+    });    
 
+    function showTechStockQuotes() {
+      $('.tech-stocks .spinner-border').show();
+      $.get('/api/get_stock_quotes', function(data, status) {
+          if (status === "success") {
+              console.log('Got Stock Quotes');
+              let tech_stocks = $('.tech-stocks .list-unstyled');
+              tech_stocks.empty(); //Clear previous quotes
+              for (const property in data) {
+                  // `${property}: ${object[property]}`
+                  if (typeof data[property].c !== undefined) {
+                      tech_stocks.append(`<div class="row"><span class="col-sm"><strong>${property}:</strong></span> <span class="col-sm">$${data[property].c}</span></div>`);
+                  }
+              }
+              $('.tech-stocks .spinner-border').hide();
+          }
+      });
+    }
+    // Dynamically get the stock updates every 15 seconds
+    setInterval(showTechStockQuotes, 30000);
   })(jQuery); // End of use strict

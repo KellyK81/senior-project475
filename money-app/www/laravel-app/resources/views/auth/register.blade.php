@@ -15,7 +15,9 @@
 
         <form method="POST" action="{{ route('register') }}">
             @csrf
-
+            
+            <div style="font-size: 20px;font-weight:bold"><h1>Money Opportunities App Registration!</h1></div>
+            
             <!-- Name -->
             <div>
                 <x-label for="name" :value="__('Name')" />

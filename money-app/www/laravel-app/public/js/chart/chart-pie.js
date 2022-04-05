@@ -4,12 +4,15 @@ Chart.defaults.global.defaultFontColor = '#858796';
 
 // Pie Chart Example
 var ctx = document.getElementById("myPieChart");
-var myPieChart = new Chart(ctx, {
+var income = parseFloat(document.getElementById("income").value)*12;
+var expenses = parseFloat(document.getElementById("expenses").value)*12;
+
+let myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Income", "Expenses", "Savings"],
+    labels: ["Annual Income", "Yearly Expenses", "Yearly Savings"],
     datasets: [{
-      data: [55, 30, 15],
+      data: [income, expenses, income - expenses],
       backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
       hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",

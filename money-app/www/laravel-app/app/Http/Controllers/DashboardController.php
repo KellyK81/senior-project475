@@ -23,7 +23,12 @@ class DashboardController extends Controller
         $user_monthly_income = Income::where('user_id', $auth_user_id)->sum('monthly_income');
         $user_monthly_expense = Expense::where('user_id', $auth_user_id)->sum('monthly_expense_amount');
 
+        $today = date('Y-m-d');
+        $diff = date_diff(date_create(Auth::user()->dob), date_create($today));
+        $user_age = $diff->format('%y');
+
         return view('dashboard', [
+            'user_age' => $user_age,
             'user_profile' => $user_profile,
             'user_monthly_income' => $user_monthly_income,
             'user_monthly_expense' => $user_monthly_expense
