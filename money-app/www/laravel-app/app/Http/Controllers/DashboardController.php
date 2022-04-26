@@ -27,19 +27,21 @@ class DashboardController extends Controller
         $diff = date_diff(date_create(Auth::user()->dob), date_create($today));
         $user_age = $diff->format('%y');
 
-        $keywords = 'Jobs';
-        if (!empty($user_profile->job_skills)) {
-            $keywords = $user_profile->job_skills;
-        }
         
-        $user_job_data = json_decode(app('App\Http\Controllers\JobSearchController')->getNewsByKeyword($keywords));
+        $user_jobs_by_title = json_decode(app('App\Http\Controllers\JobSearchController')->getJobData($user_profile->job_title));
+        // var_dump($user_jobs_by_title); die;
+        $user_jobs_by_skills = json_decode(app('App\Http\Controllers\JobSearchController')->getJobData($user_profile->job_skills));
+
+        $user_job_news = json_decode(app('App\Http\Controllers\NewsApiController')->getNewsByKeyword($user_profile->job_skills));
 
         return view('dashboard', [
             'user_age' => $user_age,
             'user_profile' => $user_profile,
             'user_monthly_income' => $user_monthly_income,
             'user_monthly_expense' => $user_monthly_expense,
-            'user_job_data' => $user_job_data
+            'user_jobs_by_title' => $user_jobs_by_title,
+            'user_jobs_by_skills' => $user_jobs_by_skills,
+            'user_job_news' => $user_job_news
         ]);
     }
 }

@@ -398,7 +398,7 @@
                         </div>
 
 
-                        <!-- Content Row -->
+                        <!-- Job Recommendation -->
                         <div class="row">
                             <div class="col-lg-12 mb-4">
                                 <!-- Job Recommendations -->
@@ -408,7 +408,31 @@
                                     </div>
                                     <div id="job_data" class="card-body">
                                         <ul>
-                                        @foreach ($user_job_data->articles as $job_article)
+                                        @foreach ($user_jobs_by_title->jobs as $job)
+                                            <li>
+                                                <dl>
+                                                    <dt>{{ $job->title }}</dt>
+                                                    <dd>{{ $job->description }}</dd>
+                                                    <dd>{{ $job->detail_url }}</dd>
+                                            </li>
+                                        @endforeach
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- Content Row -->
+                        <div class="row">
+                            <div class="col-lg-12 mb-4">
+                                <!-- Job News -->
+                                <div class="card shadow mb-4">
+                                    <div class="card-header py-3">
+                                        <h6 class="m-0 font-weight-bold text-primary">Job News</h6>
+                                    </div>
+                                    <div id="job_data" class="card-body">
+                                        <ul>
+                                        @foreach ($user_job_news->articles as $job_article)
                                             <li>{{ $job_article->title }}</li>
                                         @endforeach
                                         </ul>
