@@ -78,6 +78,7 @@
           }
       });
     }
-    // Dynamically get the stock updates every 15 seconds
+    // Dynamically get the stock updates every 30 seconds
     setInterval(showTechStockQuotes, 30000);
+
   })(jQuery); // End of use strict

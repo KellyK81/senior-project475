@@ -37,7 +37,7 @@ class StockApiController extends Controller
     public function getStockQuotes($symbols = self::TECH_STOCK_SYMBOLS) {
         $quotes = array();
         for($i = 0; $i < count($symbols); $i++) {
-            $url = self::BASE_URL.'quote?symbol='.$symbols[$i].'&token='. self::API_KEY;
+            $url = env('STOCK_BASE_URL').'quote?symbol='.$symbols[$i].'&token='. env('STOCK_API_KEY');
             $quotes[$symbols[$i]] = json_decode(self::invoke_api($url));
         }
         return $quotes;

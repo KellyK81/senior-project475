@@ -406,10 +406,12 @@
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">Job Recommendations</h6>
                                     </div>
-                                    <div class="card-body">
-                                        <p>Java Developer</p>
-                                        <p class="mb-0">Sr. Software Developer</p>
-                                        <p class="mb-0">Fullstack Developer</p>
+                                    <div id="job_data" class="card-body">
+                                        <ul>
+                                        @foreach ($user_job_data->articles as $job_article)
+                                            <li>{{ $job_article->title }}</li>
+                                        @endforeach
+                                        </ul>
                                     </div>
                                 </div>
 
