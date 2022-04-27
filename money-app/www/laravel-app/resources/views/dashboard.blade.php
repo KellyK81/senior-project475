@@ -418,10 +418,10 @@
                                                 </dl>
                                             </li>
                                         @endforeach
+                                        </ul>
                                     @else
                                         <p>No Jobs found! Please check the job title and skills you entered for job search to appear.</p>
                                     @endif
-                                        </ul>
                                     </div>
                                 </div>
 
@@ -435,10 +435,10 @@
                                     <div class="card-header py-3">
                                         <h6 class="m-0 font-weight-bold text-primary">Job News</h6>
                                     </div>
-                                    <div id="job_data" class="card-body">
+                                    <div id="job_news" class="card-body">
+                                    @if(isset($user_job_news))
                                         <ul>
                                         @foreach ($user_job_news->articles as $job_article)
-                                            <li>{{  }}</li>
                                             <li>
                                                 <dl>
                                                     <dt>{{ $job_article->title }}</dt>
@@ -448,6 +448,9 @@
                                             </li>
                                         @endforeach
                                         </ul>
+                                    @else
+                                        <p>No news found based on your job skills.</p>
+                                    @endif
                                     </div>
                                 </div>
 
