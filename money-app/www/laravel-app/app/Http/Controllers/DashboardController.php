@@ -29,7 +29,7 @@ class DashboardController extends Controller
 
         
         $user_jobs_by_title = json_decode(app('App\Http\Controllers\JobSearchController')->getJobData($user_profile->job_title));
-        // var_dump($user_jobs_by_title); die;
+
         $user_jobs_by_skills = json_decode(app('App\Http\Controllers\JobSearchController')->getJobData($user_profile->job_skills));
 
         $user_job_news = json_decode(app('App\Http\Controllers\NewsApiController')->getNewsByKeyword($user_profile->job_skills));

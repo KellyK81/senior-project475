@@ -407,15 +407,20 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Job Recommendations</h6>
                                     </div>
                                     <div id="job_data" class="card-body">
+                                    @if(isset($user_jobs_by_title))
                                         <ul>
                                         @foreach ($user_jobs_by_title->jobs as $job)
                                             <li>
                                                 <dl>
-                                                    <dt>{{ $job->title }}</dt>
+                                                    <dt>{{ $job->title }}, {{ $job->location }}</dt>
                                                     <dd>{{ $job->description }}</dd>
-                                                    <dd>{{ $job->detail_url }}</dd>
+                                                    <dd><a href="{{ $job->detail_url }}" target="_blank">Apply Here</a></dd>
+                                                </dl>
                                             </li>
                                         @endforeach
+                                    @else
+                                        <p>No Jobs found! Please check the job title and skills you entered for job search to appear.</p>
+                                    @endif
                                         </ul>
                                     </div>
                                 </div>
@@ -433,7 +438,14 @@
                                     <div id="job_data" class="card-body">
                                         <ul>
                                         @foreach ($user_job_news->articles as $job_article)
-                                            <li>{{ $job_article->title }}</li>
+                                            <li>{{  }}</li>
+                                            <li>
+                                                <dl>
+                                                    <dt>{{ $job_article->title }}</dt>
+                                                    <dd>{{ $job_article->description }}</dd>
+                                                    <dd><a href="{{ $job_article->url }}" target="_blank">Read Full News Here</a></dd>
+                                                </dl>
+                                            </li>
                                         @endforeach
                                         </ul>
                                     </div>
