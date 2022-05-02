@@ -8,6 +8,7 @@
         <input id="current_savings" type="hidden" value="{{$user_profile->current_savings ?? '0'}}" />
         <input id="expected_retirement_age" type="hidden" value="{{$user_profile->expected_retirement_age ?? '65'}}" />
         <input id="user_age" type="hidden" value="{{$user_age ?? '18'}}" />
+        <input id="user_id" type="hidden" value="{{ Auth::user()->id }}" />
 
         <!-- Page Wrapper -->
         <div id="wrapper">
@@ -407,21 +408,12 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Job Recommendations</h6>
                                     </div>
                                     <div id="job_data" class="card-body">
-                                    @if(isset($user_jobs_by_title))
+                                        <div class="spinner-border" role="status">
+                                            <span class="visually-hidden"></span>
+                                        </div>
                                         <ul>
-                                        @foreach ($user_jobs_by_title->jobs as $job)
-                                            <li>
-                                                <dl>
-                                                    <dt>{{ $job->title }}, {{ $job->location }}</dt>
-                                                    <dd>{{ $job->description }}</dd>
-                                                    <dd><a href="{{ $job->detail_url }}" target="_blank">Apply Here</a></dd>
-                                                </dl>
-                                            </li>
-                                        @endforeach
+
                                         </ul>
-                                    @else
-                                        <p>No Jobs found! Please check the job title and skills you entered for job search to appear.</p>
-                                    @endif
                                     </div>
                                 </div>
 

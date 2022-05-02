@@ -3,7 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StockApiController;
-// use App\Http\Controllers\JobSearchController;
+use App\Http\Controllers\JobSearchController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -22,5 +22,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/get_stock_quotes', [StockApiController::class, 'getStockQuotes'])->name('getStockQuotes');
 
-// Route::get('/get_job_data', [JobSearchController::class, 'getJobData'])->name('getJobData');
+Route::get('/get_jobs/{user_id}', [JobSearchController::class, 'getJobs'])->name('getJobs');
+
+Route::get('/get_job_news', [NewsApiController::class, 'getJobData'])->name('getNews');
 

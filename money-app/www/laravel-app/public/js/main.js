@@ -71,14 +71,45 @@
               for (const property in data) {
                   // `${property}: ${object[property]}`
                   if (typeof data[property].c !== undefined) {
-                      tech_stocks.append(`<div class="row"><span class="col-sm"><strong>${property}:</strong></span> <span class="col-sm">$${data[property].c}</span></div>`);
+                    tech_stocks.append(`<div class="row"><span class="col-sm"><strong>${property}:</strong></span> <span class="col-sm">$${data[property].c}</span></div>`);
                   }
               }
               $('.tech-stocks .spinner-border').hide();
           }
       });
     }
+
+
+    function showJobs() {
+      $('#job_data .spinner-border').show();
+      let user_id = $('#user_id').val();
+      $.get('/api/get_jobs/'+user_id, function(data, status) {
+          let ul_jobs = $('#job_data > ul');
+          ul_jobs.empty(); //Clear previous quotes
+          if (status === "success") {
+              console.log('Got Jobs');
+                  // `${property}: ${object[property]}`
+                  if (data.jobs !== undefined) {
+                    for (const index in data.jobs) {
+                      ul_jobs.append(`<li>
+                        <dl>
+                          <dt>${data.jobs[index].title}, ${data.jobs[index].location} at <span class="text-primary">${data.jobs[index].company_name}</span></dt>
+                          <dd>${data.jobs[index].description}</dd>
+                          <dd><a href="${data.jobs[index].detail_url}" target="_blank">Apply Here</a></dd>
+                        </dl>
+                      </li>`);
+                    }
+                  }
+          } else {
+            ul_jobs.append('<li>No Jobs found! Please check the job title and skills you entered for job search to appear.</li>');          
+          }
+          $('#job_data .spinner-border').hide();
+      });
+    }
+    
+    showJobs();
+
     // Dynamically get the stock updates every 30 seconds
-    setInterval(showTechStockQuotes, 30000);
+    // setInterval(showTechStockQuotes, 30000);
 
   })(jQuery); // End of use strict
