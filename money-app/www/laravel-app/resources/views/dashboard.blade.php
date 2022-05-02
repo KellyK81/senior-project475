@@ -67,7 +67,7 @@
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="job_search">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Job Search</span></a>
                 </li>
@@ -76,7 +76,7 @@
                 <hr class="sidebar-divider d-none d-md-block">
 
                 <li class="nav-item">
-                    <a class="nav-link" href="charts.html">
+                    <a class="nav-link" href="/calculator">
                         <i class="fa-solid fa-calculator"></i>
                         <span>Retirement Calculator</span></a>
                 </li>
