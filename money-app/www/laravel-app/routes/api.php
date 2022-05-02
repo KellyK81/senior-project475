@@ -24,5 +24,8 @@ Route::get('/get_stock_quotes', [StockApiController::class, 'getStockQuotes'])->
 
 Route::get('/get_jobs/{user_id}', [JobSearchController::class, 'getJobs'])->name('getJobs');
 
+Route::get('/get_jobs_by_terms/{search_terms}', [JobSearchController::class, 'getJobsBySearchTerms'])->name('getJobsBySearchTerms');
+
+
 Route::get('/get_job_news', [NewsApiController::class, 'getJobData'])->name('getNews');
 

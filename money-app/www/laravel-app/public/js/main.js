@@ -62,6 +62,7 @@
     });    
 
     function showTechStockQuotes() {
+      if ($('#user_id').length < 1) return;
       $('.tech-stocks .spinner-border').show();
       $.get('/api/get_stock_quotes', function(data, status) {
           if (status === "success") {
@@ -82,34 +83,70 @@
 
     function showJobs() {
       $('#job_data .spinner-border').show();
+      
+      if ($('#user_id').length < 1) return;
+
       let user_id = $('#user_id').val();
       $.get('/api/get_jobs/'+user_id, function(data, status) {
           let ul_jobs = $('#job_data > ul');
           ul_jobs.empty(); //Clear previous quotes
           if (status === "success") {
               console.log('Got Jobs');
-                  // `${property}: ${object[property]}`
-                  if (data.jobs !== undefined) {
-                    for (const index in data.jobs) {
-                      ul_jobs.append(`<li>
-                        <dl>
-                          <dt>${data.jobs[index].title}, ${data.jobs[index].location} at <span class="text-primary">${data.jobs[index].company_name}</span></dt>
-                          <dd>${data.jobs[index].description}</dd>
-                          <dd><a href="${data.jobs[index].detail_url}" target="_blank">Apply Here</a></dd>
-                        </dl>
-                      </li>`);
-                    }
-                  }
+              if (data.jobs !== undefined) {
+                for (const index in data.jobs) {
+                  ul_jobs.append(`<li>
+                    <dl>
+                      <dt>${data.jobs[index].title}, ${data.jobs[index].location} at <span class="text-primary">${data.jobs[index].company_name}</span></dt>
+                      <dd>${data.jobs[index].description}</dd>
+                      <dd><a href="${data.jobs[index].detail_url}" target="_blank">Apply Here</a></dd>
+                    </dl>
+                  </li>`);
+                }
+              }
           } else {
             ul_jobs.append('<li>No Jobs found! Please check the job title and skills you entered for job search to appear.</li>');          
           }
           $('#job_data .spinner-border').hide();
       });
     }
+
+    function showJobsByTerms() {
+      $('#job_search_data .spinner-border').show();
+      if ($('#search_terms').length < 1) {
+        return;
+      }
+
+      let search_terms = $('#search_terms').val();
+
+      $.get('/api/get_jobs_by_terms/'+search_terms, function(data, status) {
+          let ul_jobs = $('#job_search_data > ul');
+          ul_jobs.empty(); //Clear previous quotes
+          if (status === "success") {
+              console.log('Got Jobs');
+              if (data.jobs !== undefined) {
+                for (const index in data.jobs) {
+                  ul_jobs.append(`<li>
+                    <dl>
+                      <dt>${data.jobs[index].title}, ${data.jobs[index].location} at <span class="text-primary">${data.jobs[index].company_name}</span></dt>
+                      <dd>${data.jobs[index].description}</dd>
+                      <dd><a href="${data.jobs[index].detail_url}" target="_blank">Apply Here</a></dd>
+                    </dl>
+                  </li>`);
+                }
+              }
+          } else {
+            ul_jobs.append('<li>No Jobs found for your search term.</li>');          
+          }
+          $('#job_search_data .spinner-border').hide();
+      });
+    }
     
     showJobs();
 
+    
+    showJobsByTerms();
+
     // Dynamically get the stock updates every 30 seconds
-    // setInterval(showTechStockQuotes, 30000);
+    setInterval(showTechStockQuotes, 30000);
 
   })(jQuery); // End of use strict

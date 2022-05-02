@@ -31,4 +31,25 @@ class JobSearchController extends ApiController
         // json_decode(app('App\Http\Controllers\JobSearchController')->getJobData($user_profile->job_skills));
     }
 
+    public function getJobsBySearchTerms($search_terms) {
+        if (empty($search_terms)) return null;
+        
+        return json_decode($this->getJobData($search_terms));
+    }
+
+    /**
+     * Display the Dashboard
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+
+        // $job_search_result = json_decode($this->getJobData($request->search_terms));
+
+        return view('search', [
+            'search_terms' => $request->search_terms
+        ]);
+    }
+
 }

@@ -11,7 +11,7 @@ use App\Models\UserProfile;
 class DashboardController extends Controller
 {
     /**
-     * Display the Profile Income View
+     * Display the Dashboard
      *
      * @return \Illuminate\View\View
      */

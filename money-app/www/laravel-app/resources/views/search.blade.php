@@ -1,9 +1,9 @@
 @extends('master')
 @section('body')
     @parent
-
     <div class="container">
-    
+        <input id="search_terms" type="hidden" value="{{ $search_terms }}" />
+       
         <!-- Page Wrapper -->
         <div id="wrapper">
             <!-- Sidebar -->
@@ -221,7 +221,7 @@
 
                         <!-- Page Heading -->
                         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                            <h1 class="h3 mb-0 text-gray-800">Retirement Calculator</h1>
+                            <h1 class="h3 mb-0 text-gray-800">Jobs Results</h1>
                         </div>
 
                         <!-- Job Result -->
@@ -230,32 +230,15 @@
                                 <!-- Job Results -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Retirement Calculator</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary">Job Search Results</h6>
                                     </div>
-                                    <div class="card-body">
-                                    <form oninput="sumresult.value = ((parseInt(A.value) 
-                                            + parseInt(B.value)) * (parseFloat(C.value)/100)) + (parseInt(A.value) 
-                                            + parseInt(B.value))">
-                                        <label for="Age">Current Age:</label>
-                                        <input type="number" name="D" value="22" />
-                                        <br>
-                                        <label for="Retire">Retirement Age:</label>
-                                        <input type="number" name="E" value="65" />
-                                        <br>
-                                        <label for="Savings">Current Savings:</label>
-                                        <input type="number" name="A" value="50" />
-                                        <br>
-                                        <label for="Deposit">Annual Deposit:</label>
-                                        <input type="number" name="B" value="5" />
-                                        <br>
-                                        <label for="Interest">Interest Rate:</label>
-                                        <input type="number" name="C" value="4" />%
-                                        <br>
+                                    <div id="job_search_data" class="card-body">
+                                        <div class="spinner-border" role="status">
+                                            <span class="visually-hidden"></span>
+                                        </div>
                                         
-                                        Total Retirement Savings: $<output name="sumresult"></output>
-                                </form>
-                                        
-                                       
+                                        <ul>
+                                        </ul>
                                     </div>
                                 </div>
 

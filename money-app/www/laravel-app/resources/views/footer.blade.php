@@ -24,4 +24,4 @@
     <script src="{{ asset('js/admin.js') }}"></script>
 @endif
 
-<script src="{{ asset('js/main.js?v=1.15') }}"></script>
+<script src="{{ asset('js/main.js?v=1.16') }}"></script>
