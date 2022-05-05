@@ -23,6 +23,8 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['au
 
 Route::post('/search', [JobSearchController::class, 'index'])->middleware(['auth'])->name('jobsearch');
 
+Route::get('/search', [JobSearchController::class, 'index'])->middleware(['auth'])->name('jobsearch');
+
 
 Route::get('/page', function () {
     return view('layouts.page');

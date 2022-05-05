@@ -10,7 +10,7 @@
             <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
                 <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
                     <div class="sidebar-brand-icon rotate-n-15">
                         <i class="fas fa-laugh-wink"></i>
                     </div>
@@ -62,7 +62,7 @@
 
                 <!-- Nav Item - Charts -->
                 <li class="nav-item">
-                    <a class="nav-link" href="job_search">
+                    <a class="nav-link" href="/search">
                         <i class="fas fa-fw fa-chart-area"></i>
                         <span>Job Search</span></a>
                 </li>
@@ -137,6 +137,7 @@
                             </li>
 
                             <!-- Nav Item - Alerts -->
+                            @isset($news_alerts)
                             <li class="nav-item dropdown no-arrow mx-1">
                                 <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -186,7 +187,7 @@
                                     <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
                                 </div>
                             </li>
-
+                            @endisset
                             <div class="topbar-divider d-none d-sm-block"></div>
 
                             <!-- Nav Item - User Information -->
@@ -233,10 +234,13 @@
                                         <h6 class="m-0 font-weight-bold text-primary">Job Search Results</h6>
                                     </div>
                                     <div id="job_search_data" class="card-body">
-                                        <div class="spinner-border" role="status">
-                                            <span class="visually-hidden"></span>
-                                        </div>
-                                        
+                                        @isset($search_terms)
+                                            <div class="spinner-border" role="status">
+                                                <span class="visually-hidden"></span>
+                                            </div>
+                                        @else
+                                            Please search a job the above search bar for results.
+                                        @endisset
                                         <ul>
                                         </ul>
                                     </div>

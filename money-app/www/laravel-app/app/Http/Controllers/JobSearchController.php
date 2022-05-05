@@ -44,9 +44,6 @@ class JobSearchController extends ApiController
      */
     public function index(Request $request)
     {
-
-        // $job_search_result = json_decode($this->getJobData($request->search_terms));
-
         return view('search', [
             'search_terms' => $request->search_terms
         ]);
