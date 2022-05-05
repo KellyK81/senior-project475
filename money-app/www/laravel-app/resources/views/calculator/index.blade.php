@@ -1,6 +1,7 @@
 @extends('master')
 @section('body')
     @parent
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
     <div class="container">
     
@@ -92,22 +93,6 @@
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
                         </button>
-
-                        <!-- Topbar Search -->
-                        <form method="POST"
-                            action="/search"
-                            class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            @csrf
-                            <div class="input-group">
-                                <input name="search_terms" type="text" class="form-control bg-light border-0 small" placeholder="Search for jobs..."
-                                    aria-label="Search" aria-describedby="basic-addon2">
-                                <div class="input-group-append">
-                                    <button id="search_button" class="btn btn-primary" type="button">
-                                        <i class="fas fa-search fa-sm"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
 
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -227,33 +212,44 @@
 
                         <!-- Job Result -->
                         <div class="row">
-                            <div class="col-lg-12 mb-4">
+                            <div class="col-md-4 mx-auto mb-4">
                                 <!-- Job Results -->
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
-                                        <h6 class="m-0 font-weight-bold text-primary">Retirement Calculator</h6>
+                                        <h6 class="m-0 font-weight-bold text-primary"> <i class="fa-solid fa-calculator"></i> Retirement Calculator</h6>
                                     </div>
                                     <div class="card-body">
                                     <form oninput="sumresult.value = (parseInt(E.value) - parseInt(D.value)) 
                                         * (((parseInt(A.value) + parseInt(B.value)) * (parseInt(C.value)/100))
                                         + parseInt(A.value) + parseInt(B.value))">
-                                            <label for="Age">Current Age:</label>
-                                            <input type="number" name="D" value="" />
-                                            <br>
-                                            <label for="Retire">Retirement Age:</label>
-                                            <input type="number" name="E" value="" />
-                                            <br>
-                                            <label for="Savings">Current Savings:</label>
-                                            <input type="number" name="A" value="" />
-                                            <br>
-                                            <label for="Deposit">Annual Deposit:</label>
-                                            <input type="number" name="B" value="" />
-                                            <br>
-                                            <label for="Interest">Interest Rate:</label>
-                                            <input type="number" name="C" value="" />%
-                                            <br>
-                                            
-                                            <strong>Total Retirement Savings: $<output name="sumresult"></output></strong>
+                                            <div class="mt-4">
+                                                <label class="block font-medium text-sm text-gray-700" for="Age">Current Age:</label>
+                                                <input class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="number" name="D" />
+                                            </div>
+
+                                            <div class="mt-4">
+                                                <label class="block font-medium text-sm text-gray-700" for="Retire">Retirement Age:</label>
+                                                <input class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="number" name="E" />
+                                            </div>
+
+                                            <div class="mt-4">
+                                                <label class="block font-medium text-sm text-gray-700" for="Savings">Current Savings:</label>
+                                                <input class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="number" name="A" />
+                                            </div>
+
+                                            <div class="mt-4">
+                                                <label class="block font-medium text-sm text-gray-700" for="Deposit">Annual Deposit:</label>
+                                                <input class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="number" name="B" />
+                                            </div>
+
+                                            <div class="mt-4">
+                                                <label class="block font-medium text-sm text-gray-700" for="Interest">Interest Rate %:</label>
+                                                <input class="rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 block mt-1 w-full" type="number" name="C" />
+                                            </div>
+
+                                            <div class="mt-4">
+                                                <strong>Total Retirement Savings: $<output name="sumresult"></output></strong>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
